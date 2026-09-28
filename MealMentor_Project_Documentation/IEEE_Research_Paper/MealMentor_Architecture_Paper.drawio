@@ -1,0 +1,129 @@
+<mxfile host="app.diagrams.net" modified="2026-09-27T09:20:00.000Z" agent="MealMentor" version="24.7.6" type="device">
+  <diagram id="mealmentor-modular-monolith" name="MealMentor Modular Monolith Architecture">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="960" pageHeight="720" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="MealMentor: Modular Monolithic System Architecture" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=18;fontStyle=1;fontFamily=Helvetica;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="180" y="15" width="600" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- SUBTITLE -->
+        <mxCell id="subtitle" value="Single Deployable Next.js 16 / TypeScript Process with Decoupled Functional Modules" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=11;fontStyle=2;fontFamily=Helvetica;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry x="180" y="45" width="600" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== MODULAR MONOLITH BOUNDARY ==================== -->
+        <mxCell id="monolith" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#475569;strokeWidth=2.5;dashed=1;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="50" y="80" width="860" height="470" as="geometry" />
+        </mxCell>
+        <mxCell id="monolithHeader" value="MEALMENTOR MODULAR MONOLITH (Single Deployable Application Process)" style="text;html=1;strokeColor=none;fillColor=#334155;fontColor=#FFFFFF;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;rounded=1;arcSize=4;" vertex="1" parent="1">
+          <mxGeometry x="65" y="88" width="480" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- 1. PRESENTATION MODULE (Top inside monolith) -->
+        <mxCell id="modPresentation" value="1. USER PRESENTATION MODULE (Next.js 16 / React 19 / Client Dashboard)&#10;Meal Journaling · Real-Time 10-Nutrient Gaps · Multimodal Ingestion (Vision/Barcode/Voice) · Intermittent Fasting (16:8) · Hydration Tracker (35 ml/kg) · Smart Grocery List · 7-Day Weight Forecast Card" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10.5;fontStyle=1;align=center;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;fontColor=#1E3A8A;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="80" y="125" width="800" height="52" as="geometry" />
+        </mxCell>
+
+        <!-- 2. APPLICATION GATEWAY & SECURITY MODULE -->
+        <mxCell id="modGateway" value="2. APPLICATION GATEWAY &amp; SECURITY MODULE (Edge &amp; API Route Handlers)&#10;JWT Session Security (Scrypt + TimingSafeEqual) · Google OAuth 2.0 · Rate Limiting (30 req/min/IP) · Hybrid AI Assistant (Gemini 3.8 Flash + &lt;5ms Fallback) · Proactive Contextual Nudges" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10.5;fontStyle=1;align=center;fillColor=#F0FDF4;strokeColor=#22C55E;strokeWidth=1.5;fontColor=#14532D;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="80" y="200" width="800" height="52" as="geometry" />
+        </mxCell>
+
+        <!-- 3A. DETERMINISTIC NUTRITION MODULE -->
+        <mxCell id="modNutrition" value="3A. DETERMINISTIC NUTRITION MODULE&#10;• Mifflin–St Jeor BMR &amp; TDEE Equations (Indian NCO Mapping)&#10;• Dynamic 10-Nutrient Gap Engine (Gk = max(0, Tk - Ck))&#10;• Condition Clamps: Diabetes (Sugar ≤ 25g, Carbs 40%), BP (Sodium ≤ 1500mg)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fontStyle=0;align=left;spacingLeft=10;fillColor=#FFF7ED;strokeColor=#F97316;strokeWidth=1.5;fontColor=#7C2D12;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="80" y="280" width="385" height="85" as="geometry" />
+        </mxCell>
+
+        <!-- 3B. RECOMMENDATION & SIZING MODULE -->
+        <mxCell id="modRecommend" value="3B. RECOMMENDATION &amp; SIZING MODULE&#10;• Stage 1 Hard Safety Pruning (Allergens, Diet, Budget, 14-Day Recency)&#10;• Stage 2 Multi-Criteria Utility (Nutrient, Pref, Cost, Variety)&#10;• Clinical Serving Sizer (50g – 250g Gap Filling)&#10;• Smart Grocery Consolidation (331 Items) &amp; Custom Recipe Sharing" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fontStyle=0;align=left;spacingLeft=10;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=1.5;fontColor=#78350F;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="495" y="280" width="385" height="85" as="geometry" />
+        </mxCell>
+
+        <!-- 4. MACHINE LEARNING MODULE (Embedded Python Subprocess) -->
+        <mxCell id="modML" value="4. MACHINE LEARNING MODULE (Embedded Python Service / FastAPI)&#10;• 25-Dimensional Gap Feature Extraction Engine&#10;• XGBoost Learning-to-Rank Engine (rank:ndcg + Logistic Sigmoid Mapping) [NDCG@5 = 1.0000]&#10;• Random Forest 7-Day Weight Regressor (19 Features, Honest Readiness Gated) [MAE: 0.1225 kg, R²: 0.5616]" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fontStyle=0;align=left;spacingLeft=12;fillColor=#FEF2F2;strokeColor=#EF4444;strokeWidth=1.5;fontColor=#7F1D1D;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="80" y="390" width="800" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- 5. SHARED CORE & DATA ACCESS LAYER -->
+        <mxCell id="modCore" value="5. SHARED CORE &amp; DATA REPOSITORY LAYER&#10;Hydration Engine (35 ml/kg) · IF 16:8 Window Manager · Recipe Token Sharing · Audited Health Utilities" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fontStyle=1;align=center;fillColor=#F1F5F9;strokeColor=#64748B;strokeWidth=1.5;fontColor=#334155;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="80" y="480" width="800" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== EXTERNAL SERVICES (Outside Monolith) ==================== -->
+        <!-- External Ingestion Services -->
+        <mxCell id="extCloud" value="EXTERNAL INGESTION &amp; CLOUD SERVICES&#10;• Google Gemini Vision API (Plate Image Analysis)&#10;• OpenFoodFacts API (UPC/EAN Barcode Lookup)&#10;• Offline Local Barcode Cache (~500 Products)&#10;• Browser-Native Web Speech API (Voice Logging)" style="shape=cloud;whiteSpace=wrap;html=1;fontSize=10;align=center;fillColor=#FAF5FF;strokeColor=#A855F7;strokeWidth=2;fontColor=#581C87;" vertex="1" parent="1">
+          <mxGeometry x="60" y="580" width="410" height="115" as="geometry" />
+        </mxCell>
+
+        <!-- Local MongoDB Datastore -->
+        <mxCell id="extDB" value="MONGODB PERSISTENT DATASTORE&#10;• User Biometric Profiles &amp; Indian NCO Occupations&#10;• 384 Verified Indian Foods Catalog &amp; 331 Grocery Items&#10;• Longitudinal Weight Logs (t and t+7) &amp; Intake Logs&#10;• Hydration Tracking Logs &amp; Custom Recipe Entries" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fontSize=10;align=left;spacingLeft=14;fillColor=#ECFEFF;strokeColor=#06B6D4;strokeWidth=2;fontColor=#164E63;" vertex="1" parent="1">
+          <mxGeometry x="500" y="575" width="410" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== INTERNAL & EXTERNAL CONNECTORS ==================== -->
+        <!-- Presentation <-> Gateway -->
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=classic;endArrow=classic;strokeColor=#3B82F6;strokeWidth=2;" edge="1" parent="1" source="modPresentation" target="modGateway">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l1" value="UI Events &amp; Multimodal State" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=9;fontColor=#475569;backgroundColor=#FFFFFF;" vertex="1" connectable="0" parent="e1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Gateway -> Nutrition & Recommend -->
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=none;endArrow=classic;strokeColor=#22C55E;strokeWidth=1.5;" edge="1" parent="1" source="modGateway" target="modNutrition">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=none;endArrow=classic;strokeColor=#22C55E;strokeWidth=1.5;" edge="1" parent="1" source="modGateway" target="modRecommend">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Nutrition -> Recommend -->
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=none;endArrow=classic;strokeColor=#F97316;strokeWidth=2;" edge="1" parent="1" source="modNutrition" target="modRecommend">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l4" value="Nutrient Deficits (Gk)" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=9;fontColor=#7C2D12;backgroundColor=#FFFFFF;" vertex="1" connectable="0" parent="e4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Recommend -> ML Module -->
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=none;endArrow=classic;strokeColor=#EF4444;strokeWidth=2;" edge="1" parent="1" source="modRecommend" target="modML">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l5" value="Filtered Candidates" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=9;fontColor=#7F1D1D;backgroundColor=#FFFFFF;" vertex="1" connectable="0" parent="e5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ML Module -> Core -->
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=none;endArrow=classic;strokeColor=#64748B;strokeWidth=1.5;" edge="1" parent="1" source="modML" target="modCore">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Monolith <-> External Cloud -->
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=classic;endArrow=classic;strokeColor=#A855F7;strokeWidth=2;" edge="1" parent="1" source="modGateway" target="extCloud">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="60" y="225" />
+              <mxPoint x="60" y="635" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l7" value="Images, Barcodes &amp; Voice Commands" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=9;fontColor=#581C87;backgroundColor=#FFFFFF;" vertex="1" connectable="0" parent="e7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Core <-> MongoDB -->
+        <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=classic;endArrow=classic;strokeColor=#06B6D4;strokeWidth=2;" edge="1" parent="1" source="modCore" target="extDB">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l8" value="Mongoose ODM Queries" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=9;fontColor=#164E63;backgroundColor=#FFFFFF;" vertex="1" connectable="0" parent="e8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

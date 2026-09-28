@@ -1,0 +1,102 @@
+<mxfile host="app.diagrams.net" modified="2026-09-27T09:25:00.000Z" agent="MealMentor" version="24.7.6" type="device">
+  <diagram id="mealmentor-flow-diagram" name="MealMentor Execution Flow">
+    <mxGraphModel dx="1000" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="flowTitle" value="MealMentor: End-to-End Operational Flow Diagram" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=16;fontStyle=1;fontFamily=Helvetica;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="175" y="15" width="500" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- STEP 1: User Profile Ingestion -->
+        <mxCell id="step1" value="1. User Profile &amp; Biometrics Ingestion&#10;(Age, Sex, Height, Weight, Indian NCO Occupation, Health Conditions, Allergies, Budget, IF Window)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fontStyle=1;align=center;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=2;fontColor=#1E3A8A;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="175" y="65" width="500" height="52" as="geometry" />
+        </mxCell>
+
+        <!-- STEP 2: Physiological Target Computation -->
+        <mxCell id="step2" value="2. Deterministic Energy, Hydration &amp; Target Derivation&#10;• BMR via Mifflin–St Jeor &amp; TDEE via Indian NCO Activity Mapper&#10;• Goal Calorie Adjustment (±500 kcal) with Safety Floor (≥1200 kcal)&#10;• Clinical Clamps: Diabetes (Sugar ≤ 25g, Carbs 40%), Hypertension (Sodium ≤ 1500mg)&#10;• Dynamic Hydration Target: 35 ml/kg body mass" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=left;spacingLeft=12;fillColor=#F0FDF4;strokeColor=#22C55E;strokeWidth=2;fontColor=#14532D;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="175" y="145" width="500" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- STEP 3: Meal Intake Logging & Deficit Calculation -->
+        <mxCell id="step3" value="3. Multimodal Intake Ingestion &amp; Real-Time Gap Tracking&#10;• Multimodal Ingestion: Gemini Vision (Plate Photo), Barcode (Quagga2/Offline Cache), or Web Speech Voice&#10;• Real-Time 10-Nutrient Deficits: Gk = max(0, Target_k - Consumed_k) with 5-Tier Adequacy Grading&#10;• Contextual Behavioral Nudges (Missed Meals, Afternoon Hydration, Glycemic Alerts)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=left;spacingLeft=12;fillColor=#FFF7ED;strokeColor=#F97316;strokeWidth=2;fontColor=#7C2D12;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="175" y="245" width="500" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- STEP 4: Stage 1 Hard-Constraint Decision Diamond -->
+        <mxCell id="step4" value="Stage 1 Filter:&#10;Allergen-Free?&#10;Diet Compliant?&#10;Affordable Portion?&#10;Meal-Type Match?" style="rhombus;whiteSpace=wrap;html=1;fontSize=10;fontStyle=1;align=center;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=2;fontColor=#78350F;" vertex="1" parent="1">
+          <mxGeometry x="340" y="335" width="170" height="95" as="geometry" />
+        </mxCell>
+
+        <!-- Discard Candidate -->
+        <mxCell id="discard" value="Prune Candidate&#10;(0% Leakage Guarantee)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=9;fontStyle=1;align=center;fillColor=#FEE2E2;strokeColor=#EF4444;strokeWidth=1.5;fontColor=#991B1B;" vertex="1" parent="1">
+          <mxGeometry x="560" y="360" width="140" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- STEP 5: Stage 2 Scoring + Variety Decay -->
+        <mxCell id="step5" value="4. Stage 2 Multi-Objective Scoring &amp; 14-Day Variety Decay&#10;• Score = 0.40(Nutrient) + 0.20(Cal) + 0.10(MealType) + 0.10(Pref) + 0.10(Feedback) + 0.10(Variety)&#10;• 14-Day Variety Decay Penalty with Graceful Fallback for Recent Dishes" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=left;spacingLeft=12;fillColor=#FAF5FF;strokeColor=#A855F7;strokeWidth=2;fontColor=#581C87;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="175" y="455" width="500" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- STEP 6: XGBoost Learning-to-Rank Re-Ranking -->
+        <mxCell id="step6" value="5. XGBoost Learning-to-Rank Re-Ranking (XGBRanker)&#10;• 25-Dimensional Gap Feature Extraction (Densities, Margins, Ratios)&#10;• Model Margin transformed via Logistic Sigmoid: σ(x) = 1 / (1 + e^-x)&#10;• Top candidates sorted descending (NDCG@5 = 1.0000) with deterministic fallback" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;align=left;spacingLeft=12;fillColor=#FEF2F2;strokeColor=#EF4444;strokeWidth=2;fontColor=#7F1D1D;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="175" y="535" width="500" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- STEP 7: Portion Sizing & Outcome Forecasting Output -->
+        <mxCell id="step7" value="6. Serving Sizing, Smart Grocery Synthesis &amp; Outcome Forecast&#10;• Portion mass sized to close top nutrient gap (50g – 250g bounded within meal budget)&#10;• Output Recommended Dish with Grounded Nutrient Explanations&#10;• Random Forest Regressor predicts 7-day weight change (MAE: 0.1225 kg, Honest Readiness Gated)&#10;• Weekly Meal Plans Consolidated into Smart Grocery List (331 Items)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fontStyle=1;align=left;spacingLeft=12;fillColor=#ECFEFF;strokeColor=#06B6D4;strokeWidth=2;fontColor=#164E63;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="175" y="625" width="500" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- CONNECTORS -->
+        <!-- Step 1 -> Step 2 -->
+        <mxCell id="c1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=none;endArrow=classic;strokeColor=#3B82F6;strokeWidth=2;" edge="1" parent="1" source="step1" target="step2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Step 2 -> Step 3 -->
+        <mxCell id="c2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=none;endArrow=classic;strokeColor=#22C55E;strokeWidth=2;" edge="1" parent="1" source="step2" target="step3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Step 3 -> Step 4 -->
+        <mxCell id="c3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=none;endArrow=classic;strokeColor=#F97316;strokeWidth=2;" edge="1" parent="1" source="step3" target="step4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Step 4 -> Discard (NO) -->
+        <mxCell id="c4_no" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=none;endArrow=classic;strokeColor=#EF4444;strokeWidth=2;" edge="1" parent="1" source="step4" target="discard">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_no" value="NO (Violation)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;fontColor=#EF4444;fontStyle=1;backgroundColor=#FFFFFF;" vertex="1" connectable="0" parent="c4_no">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="-2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Step 4 -> Step 5 (YES) -->
+        <mxCell id="c4_yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=none;endArrow=classic;strokeColor=#22C55E;strokeWidth=2;" edge="1" parent="1" source="step4" target="step5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lbl_yes" value="YES (Admissible)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=9;fontColor=#15803D;fontStyle=1;backgroundColor=#FFFFFF;" vertex="1" connectable="0" parent="c4_yes">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="-2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Step 5 -> Step 6 -->
+        <mxCell id="c5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=none;endArrow=classic;strokeColor=#A855F7;strokeWidth=2;" edge="1" parent="1" source="step5" target="step6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Step 6 -> Step 7 -->
+        <mxCell id="c6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=none;endArrow=classic;strokeColor=#EF4444;strokeWidth=2;" edge="1" parent="1" source="step6" target="step7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
